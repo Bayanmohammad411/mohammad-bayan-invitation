@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دعوة زفاف محمد وبيان</title>
+<meta property="og:title" content="محمد &amp; بيان 🤍 | دعوة الزفاف">
+<meta property="og:description" content="دعوتكم لحضور فرحتنا — 4 نوفمبر 2026">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bayanmohammad411.github.io/mohammad-bayan-wedding/">
+<meta property="og:image" content="https://bayanmohammad411.github.io/mohammad-bayan-wedding/images/cover.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- الظرف -->
+<!-- الظرف -->
+<section id="envelope" class="envelope">
+  <div class="env-img"></div>
+  <div class="env-inside"></div>
+  <div class="env-glow"></div>
+  <div class="env-img env-flap"></div>
+  <div class="env-shine"></div>
+  <button id="seal" class="seal" onclick="openInvitation()" aria-label="افتح الدعوة"></button>
+  <p class="open-text">اضغطي على الختم</p>
+</section>
+
+<main id="invitation" class="invitation">
+
+  <section class="scene">
+    <img class="scene-base" src="images/cover.jpg" alt="محمد وبيان">
+    <div class="scene-layer water"></div>
+    <div class="scene-layer swan sw1"></div>
+    <div class="scene-layer swan sw2"></div>
+  </section>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <filter id="waterFx" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.004 0.035" numOctaves="2" seed="3" result="n">
+        <animate attributeName="baseFrequency" dur="9s" values="0.004 0.035;0.007 0.045;0.004 0.035" repeatCount="indefinite"/>
+      </feTurbulence>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="9" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </svg>
+  <!-- العداد -->
+  <section class="countdown-section">
+    <div class="bow reveal">
+      <svg viewBox="0 0 300 70" aria-hidden="true">
+        <g fill="none" stroke="#f3e6d8" stroke-width="1.4" stroke-linecap="round">
+          <path d="M150 35c-20-26-60-30-70-12s28 24 70 12z"/>
+          <path d="M150 35c20-26 60-30 70-12s-28 24-70 12z"/>
+          <path d="M150 35c-14 10-30 24-40 32M150 35c14 10 30 24 40 32"/>
+          <path d="M5 40c40 14 70 4 100-4M295 40c-40 14-70 4-100-4"/>
+          <circle cx="150" cy="35" r="5"/>
+        </g>
+      </svg>
+    </div>
+    <h2 class="reveal">موعد فرحتنا يقترب 🤍</h2>
+    <div class="countdown reveal">
+      <div class="time-box"><span id="days">00</span><small>يوم</small></div>
+      <div class="time-box"><span id="hours">00</span><small>ساعة</small></div>
+      <div class="time-box"><span id="minutes">00</span><small>دقيقة</small></div>
+      <div class="time-box"><span id="seconds">00</span><small>ثانية</small></div>
+    </div>
+    <div class="bow flip reveal">
+      <svg viewBox="0 0 300 70" aria-hidden="true">
+        <g fill="none" stroke="#f3e6d8" stroke-width="1.4" stroke-linecap="round">
+          <path d="M5 40c40 14 70 4 100-4M295 40c-40 14-70 4-100-4"/>
+          <path d="M150 35c-20-26-60-30-70-12s28 24 70 12z"/>
+          <path d="M150 35c20-26 60-30 70-12s-28 24-70 12z"/>
+          <circle cx="150" cy="35" r="5"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="full-image"><img src="images/date.jpg" alt="تاريخ العرس"></section>
+
+  <!-- المقدمة -->
+  <section class="intro paper">
+    <div class="arch reveal">
+      <div class="intro-title"><span></span><p>OUR WEDDING</p><span></span></div>
+      <div class="sparkle">✦</div>
+      <h2>بداية أجمل<br>حكاية أجمل</h2>
+      <p class="intro-text">وهذه ليلتنا التي تملؤها السعادة والدفء،<br>نتمنى أن تزينها وجوهكم وتكتمل فرحتنا بحضوركم،</p>
+      <div class="ornament">❦</div>
+      <p class="intro-text">لنلتقي على الفرح، ونشهد بداية عمر جديد<br>تحيطه المحبة وتباركه دعوات من نحب</p>
+      <div class="sparkle">✦</div>
+    </div>
+  </section>
+  <!-- الأسماء -->
+  <section class="names paper">
+    <p class="reveal">المهندس</p>
+    <h1 class="reveal">محمد شيخة</h1>
+    <div class="heart reveal">♥</div>
+    <p class="reveal">الدكتورة</p>
+    <h1 class="reveal">بيان بردان</h1>
+  </section>
+
+  <!-- التفاصيل -->
+  <section class="details paper">
+    <div class="frame reveal">
+      <h2>تفاصيل الحفل</h2>
+      <p>الأربعاء</p>
+      <h3>4 / 11 / 2026</h3>
+      <p>الساعة 7:45 مساءً</p>
+    </div>
+  </section>
+
+  <!-- المكان -->
+  <section class="location paper">
+    <h2 class="reveal">مكان الحفل</h2>
+    <div class="oval reveal">
+      <p>صالة البهية<br>قاعة رياحين<br><small>دمشق – كفرسوسة</small></p>
+    </div>
+    <button class="reveal" onclick="goToLocation()">📍 افتح موقع القاعة</button>
+  </section>
+
+  <!-- النهاية -->
+  <section class="ending paper">
+    <h2 class="reveal">بانتظاركم 🤍</h2>
+    <p class="reveal">بحضوركم تكتمل فرحتنا</p>
+    <div class="heart reveal">♥</div>
+    <h2 class="reveal names-end">محمد &amp; بيان</h2>
+  </section>
+
+</main>
+<audio id="weddingMusic" loop preload="auto">
+    <source src="audio/music.mp3" type="audio/mpeg">
+</audio>
+<script src="script.js"></script>
+</body>
+</html>

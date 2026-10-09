@@ -1,0 +1,112 @@
+:root{--cream:#f8eee2;--paper:#fbf6ef;--wine:#6b2338;--ink:#4b3c32;--text:#6f5747;--line:#cdb9a5}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--text);font-family:"Amiri",Georgia,serif;text-align:center;overflow-x:hidden}
+
+/* الظرف */
+/* الظرف (صورة) */
+.envelope{--seal-y:52%;position:fixed;inset:0;z-index:100;overflow:hidden;perspective:1400px;background:#2c0a14;transition:opacity 1s ease}
+.envelope.fade{opacity:0}
+.env-img{position:absolute;inset:0;background:url(images/envelope.jpg) center/cover no-repeat}
+.env-inside{position:absolute;inset:0;clip-path:polygon(0 0,100% 0,50% calc(var(--seal-y) + 2%));background:linear-gradient(#1c0710,#4a1a1a)}
+.env-flap{clip-path:polygon(0 0,100% 0,50% calc(var(--seal-y) + 2%));transform-origin:top;z-index:3;transition:transform 1.2s cubic-bezier(.6,0,.3,1)}
+.envelope.opening .env-flap{transform:rotateX(180deg)}
+.env-glow{position:absolute;left:50%;top:var(--seal-y);width:60px;height:60px;margin:-30px;border-radius:50%;background:radial-gradient(circle,#fff6d6 0,#f3c56b 35%,rgba(243,197,107,0) 70%);opacity:0;z-index:1}
+.envelope.opening .env-glow{animation:glow 2.2s ease-in .5s forwards}
+@keyframes glow{0%{opacity:0;transform:scale(1)}30%{opacity:1;transform:scale(5)}100%{opacity:1;transform:scale(45)}}
+.env-shine{position:absolute;inset:0;z-index:4;pointer-events:none;background:linear-gradient(115deg,transparent 40%,rgba(255,235,180,.3) 50%,transparent 60%) 0 0/250% 100%;animation:shine 3.5s linear infinite}
+@keyframes shine{from{background-position:150% 0}to{background-position:-100% 0}}
+.seal{position:absolute;z-index:5;width:130px;height:130px;top:var(--seal-y);left:50%;transform:translate(-50%,-50%);border:none;border-radius:50%;cursor:pointer;background:radial-gradient(circle,rgba(255,240,200,.35),transparent 70%);animation:sealGlow 2s ease-in-out infinite}
+@keyframes sealGlow{50%{box-shadow:0 0 38px 10px rgba(243,197,107,.8)}0%,100%{box-shadow:0 0 14px 2px rgba(243,197,107,.4)}}
+.seal.opening{animation:sealOpen 1s ease forwards}
+@keyframes sealOpen{0%{transform:translate(-50%,-50%) scale(1)}35%{transform:translate(-50%,-50%) scale(1.25)}100%{transform:translate(-50%,-50%) scale(.2);opacity:0}}
+.open-text{position:absolute;z-index:5;bottom:45px;width:100%;font-size:16px;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.7);animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+.envelope.opening .open-text{opacity:0;animation:none}
+
+/* المشهد: صورة البجعات المتحركة */
+.scene{position:relative;width:100%;aspect-ratio:1080/1920;overflow:hidden;background:#f3e8d8}
+.scene-base{position:absolute;inset:0;width:100%;height:100%;display:block}
+.scene-layer{position:absolute;inset:0;background:url(images/cover.jpg) center/100% 100% no-repeat;pointer-events:none}
+.water{-webkit-mask-image:linear-gradient(transparent 66%,#000 74%);mask-image:linear-gradient(transparent 66%,#000 74%);filter:url(#waterFx)}
+.sw1{-webkit-mask-image:radial-gradient(ellipse 21% 9% at 28% 83%,#000 55%,transparent 100%);mask-image:radial-gradient(ellipse 21% 9% at 28% 83%,#000 55%,transparent 100%);animation:sway1 7s ease-in-out infinite}
+.sw2{-webkit-mask-image:radial-gradient(ellipse 24% 9% at 79% 79%,#000 55%,transparent 100%);mask-image:radial-gradient(ellipse 24% 9% at 79% 79%,#000 55%,transparent 100%);animation:sway2 8s ease-in-out infinite}
+@keyframes sway1{50%{transform:translate(.5vw,-.7vw) rotate(.4deg)}}
+@keyframes sway2{50%{transform:translate(-.5vw,-.6vw) rotate(-.4deg)}}
+
+/* بتلات حمرا متناثرة */
+
+.petals{position:fixed;inset:0;z-index:50;pointer-events:none;overflow:hidden}
+.petal{position:absolute;top:-30px;animation:fall linear infinite}
+.petal i{display:block;width:var(--s);height:calc(var(--s)*1.3);background:radial-gradient(circle at 30% 30%,#e0425a,#a3122e 70%);border-radius:150% 0 150% 0;opacity:.85;animation:swing ease-in-out infinite alternate}
+@keyframes fall{to{transform:translateY(112vh)}}
+@keyframes swing{from{transform:translateX(-26px) rotate(-30deg) rotateY(0)}to{transform:translateX(26px) rotate(60deg) rotateY(70deg)}}
+@media (prefers-reduced-motion:reduce){.petals{display:none}.swan,.water{animation:none}}
+
+/* الدعوة */
+.invitation{display:none;width:100%}
+.invitation.show{display:block;animation:invitationShow 1.5s ease}
+@keyframes invitationShow{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+.full-image{width:100%;overflow:hidden}
+.full-image img{width:100%;height:auto;display:block}
+
+/* ظهور تدريجي */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity 1s ease,transform 1s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* قسم ورقي */
+.paper{background:var(--paper);position:relative}
+
+/* العداد (نبيذي مع شريط) */
+.countdown-section{position:relative;background:var(--wine);color:#f3e6d8;padding:90px 15px;display:flex;flex-direction:column;align-items:center}
+.countdown-section::before,.countdown-section::after{content:"";position:absolute;left:0;right:0;height:22px;background:radial-gradient(circle at 14px 0,var(--paper) 13px,transparent 14px) repeat-x/28px 22px}
+.countdown-section::before{top:0}
+.countdown-section::after{bottom:0;transform:scaleY(-1)}
+.bow{width:min(300px,80%)}.bow svg{width:100%;height:auto}.bow.flip{transform:scaleY(-1)}
+.bow.flip.reveal{transform:scaleY(-1)}
+.countdown-section h2{font-family:"Aref Ruqaa",serif;font-weight:400;font-size:28px;margin:18px 0 26px}
+.countdown{display:flex;justify-content:center;gap:0;direction:rtl;margin-bottom:18px}
+.time-box{width:74px;padding:4px 0}
+.time-box+.time-box{border-right:1px solid rgba(243,230,216,.35)}
+.time-box span{display:block;font-family:"Cormorant Garamond",serif;font-size:34px}
+.time-box small{display:block;margin-top:4px;font-size:14px;opacity:.85}
+
+/* المقدمة داخل قوس */
+.intro{padding:70px 20px}
+.arch{max-width:420px;margin:0 auto;padding:60px 26px 50px;border:1px solid var(--line);border-radius:210px 210px 18px 18px;box-shadow:0 0 0 7px var(--paper),0 0 0 8px var(--line);position:relative;background:#fffaf4}
+.intro-title{display:flex;justify-content:center;align-items:center;gap:14px;margin-bottom:26px}
+.intro-title span{width:38px;height:1px;background:var(--line)}
+.intro-title p{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:13px;letter-spacing:4px;color:#9b8674}
+.sparkle{color:#c4ab91;font-size:15px;margin:6px 0}
+.intro h2{font-family:"Aref Ruqaa",serif;font-weight:400;font-size:34px;line-height:1.7;color:var(--ink);margin:10px 0 22px}
+.intro-text{font-size:18px;line-height:2.2;color:#756255}
+.ornament{margin:20px 0;color:#a78d76;font-size:25px}
+
+/* الأسماء */
+.names{padding:70px 20px}
+.names p{font-size:19px;margin:10px}
+.names h1{font-family:"Aref Ruqaa",serif;font-weight:700;font-size:44px;color:var(--wine);margin:8px}
+.heart{font-size:34px;margin:22px;color:var(--wine)}
+
+/* التفاصيل */
+.details{padding:30px 20px 70px}
+.frame{max-width:380px;margin:0 auto;padding:44px 20px;border:1px solid var(--line);border-radius:20px;outline:1px solid var(--line);outline-offset:6px}
+.details h2{font-family:"Aref Ruqaa",serif;font-weight:400;font-size:29px;color:var(--ink);margin-bottom:20px}
+.details h3{font-family:"Cormorant Garamond",serif;font-weight:400;font-size:34px;color:var(--wine);margin:12px}
+.details p{font-size:20px;margin:10px}
+
+/* المكان */
+.location{padding:60px 20px 80px}
+
+.location h2{font-family:"Aref Ruqaa",serif;font-weight:400;font-size:32px;color:var(--ink);margin-bottom:28px}
+.oval{width:min(280px,80%);aspect-ratio:3/4;margin:0 auto;border:1px solid var(--line);border-radius:50%;outline:1px solid var(--line);outline-offset:8px;display:flex;align-items:center;justify-content:center;background:#fffaf4}
+.oval p{font-size:26px;line-height:1.9;color:var(--ink)}
+.oval small{font-size:17px;color:var(--text)}
+.location button{margin-top:44px;padding:13px 34px;border:1px solid var(--wine);border-radius:30px;background:transparent;color:var(--wine);font-family:inherit;font-size:17px;cursor:pointer;transition:.3s}
+.location button:hover{background:var(--wine);color:#fff}
+
+/* النهاية */
+.ending{min-height:55vh;padding:80px 20px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-top:1px solid var(--line)}
+.ending h2{font-family:"Aref Ruqaa",serif;font-weight:400;font-size:30px;margin:16px;color:var(--ink)}
+.ending .names-end{color:var(--wine);font-size:36px}
+.ending p{font-size:19px}
